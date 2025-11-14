@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+  <meta charset="UTF-8">
+  <title>Практична робота</title>
+  <script language="JavaScript">
+    // Завдання 2
+    function calculation() {
+      let x = 12;
+      let y = 5;
+      let z = 3;
+      let result = Math.pow((1 - x / y), 2) + z;
+      alert(result);
+    }
+
+    // Завдання 3
+    function fun(a) {
+      document.getElementById("t_res").value = a;
+    }
+
+    // Завдання 4
+    function calculateF() {
+      let x = parseFloat(document.getElementById("t_x").value);
+      let y = parseFloat(document.getElementById("t_y").value);
+      let F;
+
+      if (x * y > 0) {
+        F = x - y;
+      } else if (y < 0 && x > 3 * y) {
+        F = x ** 2 - y / x;
+      } else {
+        F = 3 * x * y - (x ** 2) * (y ** 2);
+      }
+
+      document.getElementById("t_F").value = F;
+    }
+
+    // Завдання 5
+    function fun5() {
+      let x = parseFloat(document.getElementById("t_x").value);
+      let y = parseFloat(document.getElementById("t_y").value);
+
+      if (x === 0) {
+        alert("Помилка: x не має дорівнювати 0 (ділення на 2x).");
+        return;
+      }
+
+      let sum = 0.0;
+
+      for (let i = 2; i <= 4; i++) {
+        let fact_i = 1;
+        for (let j = 1; j <= i; j++) {
+          fact_i *= j;
+        }
+
+        let fraction = ((-x + x * y * y) / (2 * x));
+
+        let sign = Math.pow(-1, i + 1);
+
+        let cur = sign * fraction * fact_i;
+
+        sum += cur;
+      }
+
+      document.getElementById("t_c").value = sum;
+    }
+  </script>
+</head>
+<body>
+
+  <h3> Завдання 1.</h3>
+  <p> Це звичайний HTML абзац.</p>
+  <script language="JavaScript">
+    document.write("Привіт! Мене звати Ткач Євгенія Василівна, студентка групи ІПЗ-24")
+  </script>
+  <p>Знову звичайний HTML абзац.</p>
+  <form>
+    <input type="button" value="Click me" onClick="alert('Я народилася 20.03.2007 року в селі Кальна')">
+  </form>
+
+  <h3> Завдання 2.</h3>
+  <p>Обчислення функції: F = (1 - x/y)^2 + z</p>
+  <form>
+    <input type="button" value="Calculate" onClick="calculation()">
+  </form>
+
+  <h3>Завдання 3 </h3>
+  <p>Робота з подіями onClick та onMouseOut</p>
+  <form id="form3">
+    <input type="text" size="100" value="Натисни на мене" onClick="fun('Відбувся клік на першому текстовому полі');"><br><br>
+    <input type="text" size="100" id="t_res" value="" onMouseOut="fun('Курсор залишив друге текстове поле');"><br>
+  </form>
+
+  <h3>Завдання 4.</h3>
+  <p>Обчислення функції за умовами:</p>
+  <pre>
+    F = {
+      x - y,   якщо xy > 0
+      x ** 2,  якщо y > 0 і x > 3y
+      3xy - x²y²,  інакше
+    }
+  </pre>
+
+  <form id="form4">
+    x: <input type="text" id="t_x" value=""><br><br>
+    y: <input type="text" id="t_y" value=""><br><br>
+    F: <input type="text" id="t_F" readonly><br><br>
+    <input type="button" onClick="calculateF();" value="Обчислити">
+  </form>
+
+  <h3>Завдання 5.</h3>
+  <p>Обчислення суми ряду:</p>
+  <pre>
+    S = Σ (від i=1 до 5) [ (-1)^i * (x + y - i!) / (i-1)! ]
+  </pre>
+
+  <form id="form5">
+    x = <input type="text" id="t_a" value="10"><br>
+    y = <input type="text" id="t_b" value="5"><br>
+    Результат: <input type="text" id="t_c" value=""><br>
+    <input type="button" onClick="fun5();" value="Розрахувати">
+  </form>
+
+</body>
+</html>

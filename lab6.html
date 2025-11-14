@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+  <meta charset="UTF-8">
+  <title>Практична робота – Завдання 6</title>
+  <script>
+    // Масиви товарів
+    let product = ["Ручка", "Олівець", "Зошит", "Блокнот", "Книжка", "Рюкзак"];
+    let quantity = [50, 20, 10, 5, 15, 100];
+    let cost = [150, 300, 1200, 8000, 5000, 400];
+
+    // Змінна для збереження індекса вибраного товару
+    let currentIndex = -1;
+
+    // Функція fun1 – вивід кількості та вартості
+    function fun1() {
+      let name = document.form1.name_cont.value.trim().toLowerCase();
+      
+      // шукаємо по зведеному до нижнього регістру
+      currentIndex = -1;
+      for (let i = 0; i < product.length; i++) {
+        if (product[i].toLowerCase() === name) {
+          currentIndex = i;
+          break;
+        }
+      }
+
+      if (currentIndex !== -1) {
+        document.form1.output_quantity.value = "Наявна кількість: " + quantity[currentIndex] + " шт.";
+        document.form1.output_cost.value = "Вартість: " + cost[currentIndex] + " грн/шт.";
+      } else {
+        document.form1.output_quantity.value = "Такого товару немає.";
+        document.form1.output_cost.value = "";
+        currentIndex = -1;
+      }
+    }
+
+    // Функція fun2 – вивід загальної суми
+    function fun2() {
+      if (currentIndex !== -1) {
+        let total = quantity[currentIndex] * cost[currentIndex];
+        document.form1.output_total.value = "Загальна сума (весь товар): " + total + " грн.";
+      } else {
+        document.form1.output_total.value = "Спочатку введіть правильний товар і натисніть кнопку «Наявна кількість і вартість».";
+      }
+    }
+  </script>
+</head>
+<body>
+    <h3>Завдання 6<h3>
+  <h2>Склад товарів</h2>
+  <form name="form1">
+    Введіть назву товару:<br>
+    <input type="text" name="name_cont" placeholder="Наприклад: диван"><br><br>
+
+    <input type="button" value="Наявна кількість і вартість" onClick="fun1()">
+    <input type="button" value="Загальна сума" onClick="fun2()"><br><br>
+
+    <input type="text" size="50" name="output_quantity" readonly><br>
+    <input type="text" size="50" name="output_cost" readonly><br>
+    <input type="text" size="50" name="output_total" readonly><br>
+  </form>
+</body>
+</html>

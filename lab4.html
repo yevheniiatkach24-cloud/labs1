@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+  <meta charset="UTF-8">
+  <title>Практична робота</title>
+  <script language="JavaScript">
+    function calculation() {
+      let x = 12;
+      let y = 5;
+      let z = 3;
+      let result = Math.pow((1 - x / y), 2) + z
+      alert(result);
+    }
+
+    function fun(a) {
+      document.getElementById("t_res").value = a;
+    }
+
+    function calculateF() {
+      let x = parseFloat(document.getElementById("t_x").value);
+      let y = parseFloat(document.getElementById("t_y").value);
+      let F;
+
+      if (x * y > 0) {
+        F = x - y;
+      } else if (y < 0 && x > 3 * y) {
+        F = x ** 2 - y / x;
+      } else {
+        F = 3 * x * y - (x ** 2) * (y ** 2);
+      }
+
+      document.getElementById("t_F").value = F;
+    }
+  </script>
+</head>
+<body>
+
+  <h3> Завдання 1.</h3>
+  <p> Це звичайний HTML абзац.</p>
+  <script language="JavaScript">
+    document.write("Привіт! Мене звати Ткач Євгенія Василівна, студентка групи ІПЗ-24")
+  </script>
+  <p>Знову звичайний HTML абзац.</p>
+  <form>
+    <input type="button" value="Click me" onClick="alert('Я народилася 20.03.2007 року в селі Кальна')">
+  </form>
+
+  <h3> Завдання 2.</h3>
+  <p>Обчислення функції: F = (1 - x/y)^2 + z</p>
+  <form>
+    <input type="button" value="Calculate" onClick="calculation()">
+  </form>
+
+  
+  <h3>Завдання 3 </h3>
+  <p>Робота з подіями onClick та onMouseOut</p>
+  <form id="main_form">
+ 
+    <input type="text" size="100" value="Натисни на мене" onClick="fun('Відбувся клік на першому текстовому полі');"><br><br>
+    
+    <input type="text" size="100" id="t_res" value="" onMouseOut="fun('Курсор залишив друге текстове поле');"><br>
+  </form>
+
+  <h3>Завдання 4.</h3>
+  <p>Обчислення функції за умовами:</p>
+  <pre>
+  F = {
+    x - y,   якщо xy > 0
+    x ** 2,  якщо y > 0 і x > 3y
+    3xy - x²y²,  інакше
+  }
+  </pre>
+
+  <form>
+    x: <input type="text" id="t_x" value=""><br><br>
+    y: <input type="text" id="t_y" value=""><br><br>
+    F: <input type="text" id="t_F" readonly><br><br>
+    <input type="button" onClick="calculateF();" value="Обчислити">
+  </form>
+
+</body>
+</html>
